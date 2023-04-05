@@ -1,0 +1,175 @@
+{% extends 'customer_base.html' %}
+{% load static %}
+
+  <body>
+    {% block content %}
+    <div class="userprofile_section d-flex justify-content-center">
+      <div class="container">
+        <div class="title" style="margin-bottom:8%;">Customer Profile
+        </div>
+      
+       
+        <!-- <span style="margin-left:60%;"><img src="{% static 'images/user.jpg' %}" alt="" width="60px;"></span>
+        <div class="input-box profile">
+            <input type="file" name="" id="">
+        </div> -->
+        <form action="#" method="post"enctype="multipart/form-data" style="border:1px solid;padding:10px;border-color:#607d8b;">
+          {% csrf_token %}
+          <div class="user-details">
+            <span class="image_upload"><img src="{{air.image.url}}" alt="" width="60px;"></span>
+        <div class="input-box profile">
+            <input type="file" name="Image" id="" style="padding:6px;">
+            <h5 id="imagecheck"></h5>
+        </div>
+            <div class="input-box">
+              <span class="details">Airline Name</span>
+              <input type="text" name="Airline_name" id="" placeholder="Enter your full name" value="{{air.name}}">
+            </div>
+            
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input type="text" name="Email" id="email" placeholder="Enter your email" autocomplete="off" value="{{air.email}}">
+              <h5 id="emailcheck" class="error_message"></h5>
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input type="text" name="Contact" id="contact" placeholder="Enter your number" autocomplete="off" value="{{air.contact}}">
+              <h5 id="contactcheck" class="error_message"></h5>
+            </div>
+           
+            <div class="input-box">
+              <span class="details">Country</span>
+              <input type="text" name="Country" placeholder="Enter your country" value="{{air.country}}">
+            </div>
+           
+            
+          </div>
+          
+          <div class="button">
+            <input type="submit" name="" value="Save Changes" id="submitbtn">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    
+    <script>
+      $(document).ready(function(){
+        
+        $('#emailcheck').hide()
+        $('#contactcheck').hide()
+        
+        
+       
+        
+        var email_err = true;
+        var contact_err = true;
+        
+        
+
+        
+
+        
+
+        
+        
+
+        
+       
+        
+
+        
+
+
+
+        $('#email').keyup(function(){
+          email_check();
+        })
+        function email_check(){
+          var email_val = $('#email').val();
+          var emailcheck2=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+          if(email_val.length == ""){
+            $('#emailcheck').show();
+            $('#emailcheck').html('** Please fill the email');
+            $('#emailcheck').focus();
+            $('#emailcheck').css("color","red");
+            email_err = false;
+            return false;
+          }
+          else{
+            $('#emailcheck').hide();
+          }
+          if(emailcheck2.test(email_val)){
+                // document.getElementById('emailcheck').innerHTML="";
+                $('#emailcheck').hide();
+
+            }
+            else{
+              $('#emailcheck').show();
+              $('#emailcheck').html('** Email Id is invalid');
+              $('#emailcheck').focus();
+              $('#emailcheck').css("color","red");
+              email_err = false;
+              return false;
+            }
+        }
+
+
+
+        $('#contact').keyup(function(){
+          contact_check();
+        })
+        function contact_check(){
+          var contact_val = $('#contact').val();
+          var mobilecheck=/^[0-9]{10}$/;
+          if(contact_val.length == ""){
+            $('#contactcheck').show();
+            $('#contactcheck').html('** Please fill the contact field');
+            $('#contactcheck').focus();
+            $('#contactcheck').css("color","red");
+          }
+          else{
+            $('#contactcheck').hide();
+          }
+          if(mobilecheck.test(contact_val)){
+            $('#contactcheck').hide();
+            }
+          else{
+            $('#contactcheck').show();
+            $('#contactcheck').html('** Mobile number is invalid');
+            $('#contactcheck').focus();
+            $('#contactcheck').css("color","red");
+            contact_err = false;
+            return false;
+          }
+        }
+
+
+
+        
+          $('#submitbtn').click(function(){
+            
+            email_err = true;
+            contact_err = true;
+            
+            
+
+            
+            email_check();
+            contact_check();
+
+
+            if((email_err == true) && (contact_err == true)){
+              return true;
+            }
+            else{
+              return false;
+            }
+          })
+          
+        
+      })
+      
+    </script>
+    {% endblock %}
+  </body>

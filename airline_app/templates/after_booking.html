@@ -1,0 +1,75 @@
+{% extends 'customer_base.html' %}
+{% load static %}
+
+<body>
+  {% block content %}
+ 
+  <section class="afterbooking_section"style="padding-top:8%;">
+    <h2 style="text-align:left;">Your Booking Details</h2>
+    <hr>
+    <div class="airline_details">
+        
+            <div class="imgBx">
+                <img src="{% static 'images/Air-India-logo.png' %}" alt="">
+            </div>
+            <div class="content">
+                <span><b>Air India</b></span><br>
+                <span>Airline number : 587567</span><br>
+                <span>From City : India</span><br>
+                <span>Fare : 20000</span>
+            </div>
+        
+    </div>
+    <hr>
+   
+    
+
+    
+    <h2>All Passengers Details</h2>
+    <hr>
+    
+    
+    <table class="table">
+        <thead>
+            <th>Sr.No</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Mobile No</th>
+            <th>Fare</th>
+            
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Sr.No">1</td>
+                <td data-label="Name">Arun</td>
+                <td data-label="Age">34</td>
+                <td data-label="Gender">Male</td>
+                <td data-label="Mobile No">98765644</td>
+                <td data-label="Fare">20000.00/-</td>
+                
+            </tr>
+            <tr>
+                
+                <th colspan="5" style="text-align:right;color:#607d8b;">Total Fare:</th>
+                <th colspan="2" style="text-align:left;color:#607d8b;">20000</th>
+            </tr>
+            <!-- <tr>
+                <td colspan="7"><button id="b2"><a href="" style="color:white;text-decoration:none;">Email Ticket</a></button></td>
+            </tr> -->
+
+        </tbody>
+        
+        
+    </table>
+    <div class="email_ticket">
+            
+        <button><a href="" style="color:white;text-decoration:none;">Email Ticket</a></button>
+    </div>
+    
+    </section>
+  {% endblock %}
+
+</body>
+
+  

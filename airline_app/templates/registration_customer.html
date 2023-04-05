@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+{% load static %}
+
+  <body>
+    {% block content %}
+    <div class="registration_section d-flex justify-content-center">
+      <div class="container">
+        <div class="title">Customer Registration</div>
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Full Name</span>
+              <input type="text" name="Fullname" placeholder="Enter your name" autocomplete="off">
+              
+            </div>
+            <div class="input-box">
+              <span class="details">Username</span>
+              <input type="text" name="Username" id="username" placeholder="Enter your username" autocomplete="off">
+              <h5 id="usercheck" class="error_message"></h5>
+            </div>
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input type="text" name="Email" id="email" placeholder="Enter your email" autocomplete="off">
+              <h5 id="emailcheck" class="error_message"></h5>
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input type="text" name="Contact" id="contact" placeholder="Enter your number" autocomplete="off">
+              <h5 id="contactcheck" class="error_message"></h5>
+            </div>
+            <div class="input-box">
+              <span class="details">Password</span>
+              <input type="password" name="Password" id="password" placeholder="Enter your password" autocomplete="off">
+              <h5 id="passwordcheck" class="error_message"></h5>
+            </div>
+            <div class="input-box">
+              <span class="details">Confirm password</span>
+              <input type="password" name="Confirm_password" id="confirm_password" placeholder="Confirm your password" autocomplete="off">
+              <h5 id="confpasswordcheck" class="error_message"></h5>
+            </div>
+            <div class="input-box">
+              <span class="details">City</span>
+              <input type="text" name="City" placeholder="Enter your city" autocomplete="off">
+              
+            </div>
+            <div class="input-box">
+              <span class="details">Date of Birth</span>
+              <input type="date" name="Date" placeholder="Enter your DOB" autocomplete="off">
+              
+            </div>
+            <div class="input-box">
+              <span class="details">Image</span>
+              <input type="file" name="image" style="padding-top:3%;">
+              <h5 id="imagecheck"></h5>
+            </div>
+          </div>
+          <div class="gender-details">
+            <span class="gender-title">Gender</span>
+            <div class="category">
+              <input type="radio" name="Gender" placeholder="gender" value="male">Male
+              <input type="radio" name="Gender" placeholder="gender" value="female">Female
+
+              <!-- <label for="">
+                <span class="dot one"></span>
+                <span class="gender">Male</span>
+              </label>
+              <label for="">
+                <span class="dot one"></span>
+                <span class="gender">Female</span>
+              </label> -->
+            </div>
+          </div>
+          
+          <div class="button">
+            <input type="submit" name="register" value="Register" id="submitbtn">
+          </div>
+        </form>
+        <p>{{msg}}</p>
+        
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#usercheck').hide();
+        $('#emailcheck').hide();
+        $('#contactcheck').hide();
+        $('#passwordcheck').hide();
+        $('#confpasswordcheck').hide();
+        
+       
+        var user_err = true;
+        var email_err = true;
+        var contact_err = true;
+        var password_err = true;
+        var conf_password_err = true;
+        
+
+        $('#username').keyup(function(){
+          username_check();
+        })
+        function username_check(){
+          var user_val = $('#username').val()
+          if(user_val.length == ''){
+            $('#usercheck').show();
+            $('#usercheck').html('** Please fill the username');
+            $('#usercheck').focus();
+            $('#usercheck').css("color","red");
+            user_err = false;
+            return false;
+          }
+          else{
+            $('#usercheck').hide();
+          }
+          if((user_val.length < 3) || (user_val.length > 10)){
+            $('#usercheck').show();
+            $('#usercheck').html('** Username length must be between 3 and 10');
+            $('#usercheck').focus();
+            $('#usercheck').css("color","red");
+            user_err = false;
+            return false;
+          }
+          else{
+            $('#usercheck').hide();
+          }
+        }
+
+
+        
+
+        $('#password').keyup(function(){
+          password_check();
+        })
+        function password_check(){
+          var pass_val = $('#password').val();
+          var passwordcheck3=/^(?=.*[A-Z])(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*]).{8,30}$/;
+          if(pass_val.length == ''){
+            $('#passwordcheck').show();
+            $('#passwordcheck').html('** Please fill the password');
+            $('#passwordcheck').focus();
+            $('#passwordcheck').css("color","red");
+            password_err = false;
+            return false;
+          }
+          else{
+            $('#passwordcheck').hide();
+          }
+          if(passwordcheck3.test(pass_val)){
+            $('#passwordcheck').hide();
+                
+          }
+          else{
+            $('#passwordcheck').show();
+            $('#passwordcheck').html('** Password is invalid');
+            $('#passwordcheck').focus();
+            $('#passwordcheck').css("color","red");
+            password_err = false;
+            return false;
+          }
+
+
+          // if((pass_val.length < 3) || (pass_val.length > 10)){
+          //   $('#passwordcheck').show();
+          //   $('#passwordcheck').html('** Password length must be between 3 and 10');
+          //   $('#passwordcheck').focus();
+          //   $('#passwordcheck').css("color","red");
+          //   password_err = false;
+          //   return false;
+          // }
+          // else{
+          //   $('#passwordcheck').hide();
+          // }
+        }
+
+        
+       
+        
+
+        $('#confirm_password').keyup(function(){
+          confirm_password_check();
+        })
+        function confirm_password_check(){
+          var con_pass_val=$('#confirm_password').val();
+          var pass_val = $('#password').val();
+          if(pass_val != con_pass_val){
+            $('#confpasswordcheck').show();
+            $('#confpasswordcheck').html('** Password is not matching');
+            $('#confpasswordcheck').focus();
+            $('#confpasswordcheck').css("color","red");
+            conf_password_err = false;
+            return false;
+          }
+          else{
+            $('#confpasswordcheck').hide();
+          }
+          }
+
+
+
+        $('#email').keyup(function(){
+          email_check();
+        })
+        function email_check(){
+          var email_val = $('#email').val();
+          var emailcheck2=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+          if(email_val.length == ""){
+            $('#emailcheck').show();
+            $('#emailcheck').html('** Please fill the email');
+            $('#emailcheck').focus();
+            $('#emailcheck').css("color","red");
+            email_err = false;
+            return false;
+          }
+          else{
+            $('#emailcheck').hide();
+          }
+          if(emailcheck2.test(email_val)){
+                // document.getElementById('emailcheck').innerHTML="";
+                $('#emailcheck').hide();
+
+            }
+            else{
+              $('#emailcheck').show();
+              $('#emailcheck').html('** Email Id is invalid');
+              $('#emailcheck').focus();
+              $('#emailcheck').css("color","red");
+              email_err = false;
+              return false;
+            }
+        }
+
+
+
+        $('#contact').keyup(function(){
+          contact_check();
+        })
+        function contact_check(){
+          var contact_val = $('#contact').val();
+          var mobilecheck=/^[0-9]{10}$/;
+          if(contact_val.length == ""){
+            $('#contactcheck').show();
+            $('#contactcheck').html('** Please fill the contact field');
+            $('#contactcheck').focus();
+            $('#contactcheck').css("color","red");
+          }
+          else{
+            $('#contactcheck').hide();
+          }
+          if(mobilecheck.test(contact_val)){
+            $('#contactcheck').hide();
+            }
+          else{
+            $('#contactcheck').show();
+            $('#contactcheck').html('** Mobile number is invalid');
+            $('#contactcheck').focus();
+            $('#contactcheck').css("color","red");
+            email_err = false;
+            return false;
+          }
+        }
+
+
+
+        
+          $('#submitbtn').click(function(){
+            user_err = true;
+            email_err = true;
+            contact_err = true;
+            password_err = true;
+            conf_password_err = true;
+            
+
+            username_check();
+            password_check();
+            confirm_password_check();
+            email_check();
+            contact_check();
+
+
+            if((user_err == true) && (password_err == true) && (conf_password_err == true) && (email_err == true) && (contact_err == true)){
+              return true;
+            }
+            else{
+              return false;
+            }
+          })
+          
+        
+      })
+
+    </script>
+    
+    {% endblock %}
+  </body>

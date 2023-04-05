@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<body>
+  {% block content %}
+  <!-- <img src="{% static 'images/latest3.png' %}" class="w-100" alt="..."> -->
+  <section class="search_result_detail_section" style="padding-top:8%;">
+    <h2>View Flight</h2>
+    
+    <table class="table">
+        <thead>
+            <th>Attribute</th>
+            <th>Values</th>
+           
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Attribute">Airline Name</td>
+                <td data-label="Values">{{fl.airline_name}}</td>
+            </tr>
+            <tr>
+                <td data-label="Attribute">Flight Number</td>
+                <td data-label="Values">{{fl.flight_no}}</td>
+            </tr>
+            <tr>
+                <td data-label="Attribute">From Country</td>
+                <td data-label="Values">{{fl.departure_city}}</td>
+            </tr>
+            <tr>
+                <td data-label="Attribute">Destination Country</td>
+                <td data-label="Values">{{fl.arrival_city}}</td>
+            </tr>
+            <tr>
+                <td data-label="Attribute">Departure Date/Time</td>
+                <td data-label="Values">{{fl.departure_datetime}}</td>
+            </tr>
+            <tr>
+                <td data-label="Attribute">Arrival Date/Time</td>
+                <td data-label="Values">{{fl.arrival_datetime}}</td>
+            </tr>
+            <tr>
+                <td data-label="Attribute">Total Business seats</td>
+                <td data-label="Values">50</td>
+            </tr>
+            <tr>
+                <td data-label="Attribute">Total seats</td>
+                <td data-label="Values">{{fl.no_of_seats}}</td>
+            </tr>
+            <tr>
+                <td data-label="Attribute">Fare</td>
+                <td data-label="Values">{{fl.price}}</td>
+            </tr>
+            <tr>
+                <td data-label="Attribute">Image</td>
+                <td data-label="Values"><img src="{{fl.image.url}}" alt="" width="40px;"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="button_row"><a href="{% url 'loginpage' %}" style="margin-left:80%;"><button>Book Now</button></a></td>
+            </tr>
+            
+            
+
+        </tbody>
+    </table>
+    
+    </section>
+    <section class="photo_gallery">
+
+        <div class="container">
+          <div class="row">
+            <!-- <h2 style="border-bottom: 2px solid #ff4584;margin-bottom: 5%;">Popular Destinations</h2> -->
+            <h2>Photo Gallery</h2>
+            
+            <div class="col-sm-12 col-md-4 col-lg-4">
+              <div class="card" style="border:none;">
+                <img src="{% static 'images/airindia_cabin1.jpg' %}" class="card-img-top img-fluid" alt="..." style="width:500px;height:200px;">
+                <div class="card-body">
+                  <!-- <h5 class="card-title" style="text-align:center;color:#607d8b;">England</h5> -->
+                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="col-sm-12 col-md-4 col-lg-4">
+            
+              <div class="card" style="border:none;">
+                <img src="{% static 'images/airindia_cabin2.jpg' %}" class="card-img-top img-fluid" alt="..." style="width:500px;height:200px;">
+                <div class="card-body">
+                  <!-- <h5 class="card-title" style="text-align:center;color:#607d8b;">UAE</h5> -->
+                  <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+              </div>
+            </div>
+            
+         
+            <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card" style="border:none;">
+              <img src="{% static 'images/airindia_cabin3.jpg' %}" class="card-img-top img-fluid" alt="..." style="width:500px;height:200px;">
+              <div class="card-body">
+                <!-- <h5 class="card-title" style="text-align:center;color:#607d8b;">USA</h5> -->
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
+            </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card" style="border:none;">
+              <img src="{% static 'images/airindia_cabincrew.jpg' %}" class="card-img-top img-fluid" alt="..." style="width:500px;height:200px;">
+              <div class="card-body">
+                <!-- <h5 class="card-title" style="text-align:center;color:#607d8b;">Ireland</h5> -->
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
+            </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card" style="border:none;">
+              <img src="{% static 'images/airindia_cabin4.jpg' %}" class="card-img-top img-fluid" alt="..." style="width:500px;height:200px;">
+              <div class="card-body">
+                <!-- <h5 class="card-title" style="text-align:center;color:#607d8b;">Switzerland</h5> -->
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
+            </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card" style="border:none;">
+              <img src="{% static 'images/airindia_cabin5.jpg' %}" class="card-img-top img-fluid" alt="..." style="width:500px;height:200px;">
+              <div class="card-body">
+                <!-- <h5 class="card-title" style="text-align:center;color:#607d8b;">Japan</h5> -->
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+    </section>
+  {% endblock %}
+
+</body>
+
+  

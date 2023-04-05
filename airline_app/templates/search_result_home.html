@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<body>
+  {% block content %}
+  <!-- <img src="{% static 'images/latest3.png' %}" class="w-100" alt="..."> -->
+  <section class="search_result_section" style="padding-top:8%;">
+    <h2>Available Flights</h2>
+    
+    <table class="table">
+        <thead>
+            <th>Sr.No</th>
+            <th>Image</th>
+            <th>Airline Name</th>
+            <th>Flight Number</th>
+            <th>Total Fare</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {% for f in fl %}
+            <tr>
+                <td data-label="Sr.No">{{f.id}}</td>
+                <td data-label="Image"><img src="{{f.image.url}}" alt="" width="65px;"></td>
+                <td data-label="Airline Name">{{f.airline_name}}</td>
+                <td data-label="Flight Number">{{f.flight_no}}</td>
+                <td data-label="Total Fare">{{f.price}}/-</td>
+                <td data-label="Action"><a href="{% url 'searchresultdetail_homepage' f.id %}"><button>View Detail</button></a>&nbsp;<a href="login"><button>Book Now</button></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    </section>
+  {% endblock %}
+
+</body>
+
+  

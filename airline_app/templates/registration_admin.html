@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+  <body>
+    {% block content %}
+    <section class="registration_admin_section">
+      <!-- <div class="imgBx">
+        <img src="{% static 'images/handnew.png' %}" alt="">
+      </div> -->
+      <div class="contentBx">
+        <div class="formBx">
+          <h2>Admin Registration</h2>
+          
+          <form action="" method="post">
+            {% csrf_token %}
+            <div class="inputBx">
+              <span>Username</span>
+              <input type="text" name="Username" id="username" placeholder="Enter your username" autocomplete="off">
+              <h5 id="usercheck" class="error_message"></h5>
+            </div>
+            <div class="inputBx">
+              <span>Password:</span>
+              <input type="password" name="Password" id="password" placeholder="Enter your password" autocomplete="off">
+              <h5 id="passwordcheck" class="error_message"></h5>
+            </div>
+            <div class="inputBx">
+                <span>Confirm Password</span>
+                <input type="password" name="Confirm_password" id="confirm_password" placeholder="Confirm your password" autocomplete="off">
+                <h5 id="confpasswordcheck" class="error_message"></h5>
+            </div>
+
+            
+            <div class="inputBx">
+                <input type="submit" name="register" value="Register" id="submitbtn">
+            </div>
+            
+          </form>
+          <p>{{msg}}</p>
+        </div>
+      </div>
+    </section>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#usercheck').hide();
+        $('#passwordcheck').hide();
+        $('#confpasswordcheck').hide();
+
+        var user_err = true;
+        var password_err = true;
+        var conf_password_err = true;
+
+        $('#username').keyup(function(){
+          username_check();
+        })
+        function username_check(){
+          var user_val = $('#username').val()
+          if(user_val.length == ''){
+            $('#usercheck').show();
+            $('#usercheck').html('** Please fill the username');
+            $('#usercheck').focus();
+            $('#usercheck').css("color","red");
+            user_err = false;
+            return false;
+          }
+          else{
+            $('#usercheck').hide();
+          }
+          
+        }
+
+
+    
+        $('#password').keyup(function(){
+          password_check();
+        })
+        function password_check(){
+          var pass_val = $('#password').val();
+        //   var passwordcheck3=/^(?=.*[A-Z])(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*]).{8,30}$/;
+          if(pass_val.length == ''){
+            $('#passwordcheck').show();
+            $('#passwordcheck').html('** Please fill the password');
+            $('#passwordcheck').focus();
+            $('#passwordcheck').css("color","red");
+            password_err = false;
+            return false;
+          }
+          else{
+            $('#passwordcheck').hide();
+          }
+          
+        }
+
+        $('#confirm_password').keyup(function(){
+          confirm_password_check();
+        })
+        function confirm_password_check(){
+          var con_pass_val=$('#confirm_password').val();
+          var pass_val = $('#password').val();
+          if(pass_val != con_pass_val){
+            $('#confpasswordcheck').show();
+            $('#confpasswordcheck').html('** Password is not matching');
+            $('#confpasswordcheck').focus();
+            $('#confpasswordcheck').css("color","red");
+            conf_password_err = false;
+            return false;
+          }
+          else{
+            $('#confpasswordcheck').hide();
+          }
+          }
+
+
+          $('#submitbtn').click(function(){
+            user_err = true;
+            password_err = true;
+            conf_password_err = true;
+            
+
+            username_check();
+            password_check();
+            confirm_password_check();
+            
+
+
+            if((user_err == true) && (password_err == true) && (conf_password_err == true)){
+              return true;
+            }
+            else{
+              return false;
+            }
+          })
+          
+        
+      })
+
+    </script>
+    {% endblock %}
+  </body>

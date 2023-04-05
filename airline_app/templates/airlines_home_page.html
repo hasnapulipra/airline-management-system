@@ -1,0 +1,59 @@
+{% extends 'airlines_base.html' %}dashboard
+{% load static %}
+
+<body>
+  {% block content %}
+  <!-- <img src="{% static 'images/latest3.png' %}" class="d-block w-100" alt="..."width="150%;" height="20%;"> -->
+  <section class="dashboard_airlines" style="margin-bottom:0%;padding-top:8%;">
+    <h2 style="color:#ff4584;">{{air.name}} Dashboard</h2>
+    <div class="container">
+      <div class="row vcenter" style="padding:15%;">
+        <!-- <h2 style="border-bottom: 2px solid #ff4584;margin-bottom: 5%;">Popular Destinations</h2> -->
+        
+        
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="card xs-margin visible-xs" style="background-color:#ff4584;">
+            
+            <div class="card-body">
+              <a href="add_flight" style="text-decoration:none;"><h5 class="card-title" style="text-align:center;color:white;">Add Flight</h5></a>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+          </div>
+        </div>
+      
+      
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="card xs-margin visible-xs" style="background-color:#ff4584;">
+            
+            <div class="card-body">
+              <a href="view_flight_airlines" style="text-decoration:none;"><h5 class="card-title" style="text-align:center;color:white;">View Flight</h5></a>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+          </div>
+        </div>
+        
+     
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="card xs-margin visible-xs" style="background-color:#ff4584;">
+            
+            <div class="card-body">
+              <a href="view_bookings_airlines" style="text-decoration:none;"><h5 class="card-title" style="text-align:center;color:white;">View Booking</h5></a>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+          </div>
+        </div>
+
+        
+        
+        
+      </div>
+    </div>
+    </section>
+  {% endblock %}
+
+</body>
+
+  

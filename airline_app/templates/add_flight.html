@@ -1,0 +1,68 @@
+{% extends 'airlines_base.html' %}
+{% load static %}
+
+  <body>
+    {% block content %}
+    <div class="Add_flight_section d-flex justify-content-center">
+      <div class="container">
+        <div class="title">Add Flight</div>
+        <form action="#" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Airline Name</span>
+              <input type="text" name="Airline_name" id="air_name" autocomplete="off">
+            </div>
+            <div class="input-box">
+              <span class="details">Flight No</span>
+              <input type="text" name="Flight_no" id="flight_no" autocomplete="off">
+            </div>
+            <div class="input-box">
+              <span class="details">Departure Country/City</span>
+              <input type="text" name="Departure_city" id="d_city" autocomplete="off">
+            </div>
+            <div class="input-box">
+              <span class="details">Arrival Country/City</span>
+              <input type="text" name="Arrival_city" id="a_city" autocomplete="off">
+            </div>
+            <div class="input-box">
+              <span class="details">Departure Date/Time</span>
+              <input type="datetime-local" name="Departure_datatime" id="d_date" autocomplete="off">
+            </div>
+            <div class="input-box">
+              <span class="details">Arrival Date/Time</span>
+              <input type="datetime-local" name="Arrival_datatime" id="a_date" autocomplete="off">
+            </div>
+            <div class="input-box">
+              <span class="details">Total Seats</span>
+              <input type="text" name="Number_of_Seats" id="seat" autocomplete="off">
+            </div>
+            <!-- <div class="input-box">
+              <span class="details">Total Business Seats</span>
+              <input type="text" name="B_seats" id="" autocomplete="off">
+            </div> -->
+            <div class="input-box">
+              <span class="details">Price</span>
+              <input type="text" name="Price" id="price" autocomplete="off">
+            </div>
+            <div class="input-box">
+              <span class="details">Image</span>
+              <input type="file" name="Image" id="image" style="padding-top:3%;">
+            </div>
+          </div>
+          
+          
+          <div class="button">
+            <input type="submit" name="" value="Save">
+            <!-- <input type="submit" name="" value="Cancel" id="b2"> -->
+
+          </div>
+        </form>
+        <p>{{msg}}</p>
+      </div>
+    </div>
+
+    
+    
+    {% endblock %}
+  </body>

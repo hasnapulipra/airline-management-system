@@ -1,0 +1,39 @@
+{% extends 'airlines_base.html' %}
+{% load static %}
+
+<body>
+  {% block content %}
+  <!-- <img src="{% static 'images/latest3.png' %}" class="w-100" alt="..."> -->
+  <section class="view_flight_airlines_section" style="padding-top:8%;">
+    <h2>View Flights</h2>
+    
+    <table class="table">
+        <thead>
+            <th>Sr.No</th>
+            <th>Image</th>
+            <th>Airline Name</th>
+            <th>Flight Number</th>
+            <th>Total Fare</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {% for f  in fl %}
+            <tr>
+                <td data-label="Sr.No">{{f.id}}</td>
+                <td data-label="Image"><img src="{{f.image.url}}" alt="" width="65px;"></td>
+                <td data-label="Airline Name">{{f.airline_name}}</td>
+                <td data-label="Flight Number">{{f.flight_no}}</td>
+                <td data-label="Total Fare">{{f.price}}/-</td>
+                <td data-label="Action"><a href="{% url 'viewflightdetail_airlinespage' f.id %}"><button>View Detail</button></a>&nbsp;<a href="{% url 'edit_view_flight' f.id%}"><button>Edit Detail</button></a>&nbsp;<a href="{% url 'delete_view_flight' f.id%}"><button>Delete</button></a></td>
+            </tr>
+           {% endfor %}
+
+        </tbody>
+    </table>
+    
+    </section>
+  {% endblock %}
+
+</body>
+
+  

@@ -1,0 +1,53 @@
+{% extends 'airlines_base.html' %}
+{% load static %}
+
+<body>
+  {% block content %}
+  <!-- <img src="{% static 'images/latest3.png' %}" class="w-100" alt="..."> -->
+  <section class="view_profile_airlines_section" style="padding-top:8%;">
+    <h2>Airline Profile</h2>
+    
+    <table class="table">
+        <thead>
+            <th>Attribute</th>
+            <th>Values</th>
+           
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Attribute">Airline Name</td>
+                <td data-label="Values">{{air.name}}</td>
+            </tr>
+            <tr>
+                <td data-label="Attribute">Email</td>
+                <td data-label="Values">{{air.email}}</td>
+            </tr>
+            <tr>
+                <td data-label="Attribute">Contact No</td>
+                <td data-label="Values">{{air.contact}}</td>
+            </tr>
+            <tr>
+                <td data-label="Attribute">Country</td>
+                <td data-label="Values">{{air.country}}</td>
+            </tr>
+            
+            <tr>
+                <td data-label="Attribute">Image</td>
+                <td data-label="Values"><img src="{{air.image.url}}" alt="" width="40px;"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="button_row"><a href="{% url 'editprofile_airlinespage' %}"><button>Edit Profile</button></a></td>
+            </tr>
+            
+            
+
+        </tbody>
+    </table>
+    
+    </section>
+   
+  {% endblock %}
+
+</body>
+
+  

@@ -1,0 +1,41 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+
+<body>
+  {% block content %}
+  <!-- <img src="{% static 'images/latest3.png' %}" class="w-100" alt="..."> -->
+  <section class="view_request_admin_section" style="padding-top:8%;">
+    <h2>View Airline Requests</h2>
+    
+    <table class="table">
+        <thead>
+            <th>Sr.No</th>
+            <th>Image</th>
+            <th>Airlines Name</th>
+            <th>Email</th>
+            <th>Contact No</th>
+            <!-- <th>Country</th> -->
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {% for r in req %}
+            <tr>
+                <td data-label="Sr.No">{{r.id}}</td>
+                <td data-label="Image"><img src="{{r.image.url}}" alt="" width="65px;"></td>
+                <td data-label="Airlines Name">{{r.name}}</td>
+                <td data-label="Email">{{r.email}}</td>
+                <td data-label="Contact No">{{r.contact}}</td>
+                <!-- <td data-label="Country">India</td> -->
+                <td data-label="Action"><a href="{% url 'insert_registration_airlines' r.id %}" style="color:#ff4584;" name="accept">Accept</a>&nbsp;&nbsp;<a href="{% url 'delete_request_airlines' r.id %}" style="color:#ff4584;" name="deny">Deny</a></td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    
+    </section>
+  {% endblock %}
+
+</body>
+
+  

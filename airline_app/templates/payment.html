@@ -1,0 +1,76 @@
+{% extends 'customer_base.html' %}
+{% load static %}
+
+<body>
+  {% block content %}
+  <!-- <img src="{% static 'images/latest3.png' %}" class="w-100" alt="..."> -->
+    <section class="payment_section"style="padding-top:8%;">
+    <!-- <h2>PAYMENT</h2> -->
+        <div class="container">
+            <form action="after_booking">
+               
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <h3 class="title">Payment Details</h3>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <img src="{% static 'images/card_new2.jpg' %}" alt="" width="100%">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="inputbox">
+                                    <span>Card holder's name :</span>
+                                    <input type="text" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="inputbox">
+                                    <span>Card number :</span>
+                                    <input type="number" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="inputbox">
+                                    <span>Expiry month :</span>
+                                    <input type="text" placeholder="">
+                                </div>
+                                
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="inputbox">
+                                    <span>Expiry year :</span>
+                                    <input type="number" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="inputbox">
+                                    <span>CVV :</span>
+                                    <input type="number" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                       
+                
+                    
+                
+                <a href="after_booking"><button>Make Payment</button></a>
+            </form>
+        </div>
+    
+    
+    
+    </section>
+  {% endblock %}
+
+</body>
+
+  

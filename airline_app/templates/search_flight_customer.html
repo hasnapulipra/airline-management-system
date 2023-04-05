@@ -1,0 +1,50 @@
+{% extends 'customer_base.html' %}
+{% load static %}
+
+  <body>
+    {% block content %}
+    <section class="searchsectioncustomer">
+      <!-- <div class="imgBx">
+        <img src="{% static 'images/handnew.png' %}" alt="">
+      </div> -->
+      <div class="contentBx">
+        <div class="formBx">
+          <h2>Search Flight</h2>
+          <form action="" method="post">
+            {% csrf_token %}
+            <div class="inputBx">
+              <span>From Country/City:</span>
+              <input type="text" name="From_country" autocomplete="off">
+            </div>
+            <div class="inputBx">
+              <span>To Country/City:</span>
+              <input type="text" name="To_country" autocomplete="off">
+            </div>
+            <!-- <div class="inputBx">
+                <span>Travel Date:</span>
+                <input type="date" name="">
+            </div> -->
+            <!-- <div class="inputBx">
+              <span>Class:</span><br>
+              <select name="" id="">
+                <option value="Business">Business</option>
+                <option value="Economy">Economy</option>
+              </select>
+          </div> -->
+
+
+            
+            <div class="inputBx">
+              <input type="submit" value="Submit" name="" style="width:80%;">
+            </div>
+            
+          </form>
+          <p>{{msg}}</p>
+        </div>
+      </div>
+    </section>
+
+    
+    
+    {% endblock %}
+  </body>

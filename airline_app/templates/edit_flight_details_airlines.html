@@ -1,0 +1,75 @@
+{% extends 'airlines_base.html' %}
+{% load static %}
+
+  <body>
+    {% block content %}
+    <div class="Add_flight_section d-flex justify-content-center">
+      <div class="container">
+        <div class="title">Edit Flight Detail</div>
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Airline Name</span>
+              <input type="text" name="Airline_name" id="" value="{{fl.airline_name}}">
+            </div>
+            <div class="input-box">
+              <span class="details">Flight No</span>
+              <input type="text" name="Flight_no" id="" value="{{fl.flight_no}}">
+            </div>
+            <div class="input-box">
+              <span class="details">Departure Country/City</span>
+              <input type="text" name="Departure_city" id="" value="{{fl.departure_city}}">
+            </div>
+            <div class="input-box">
+              <span class="details">Arrival Country/City</span>
+              <input type="text" name="Arrival_city" id="" value="{{fl.arrival_city}}">
+            </div>
+            <!-- <div class="input-box">
+              <span class="details">Departure Date/Time</span>
+              <input type="datetime-local" name="Departure_datetime" id="" value="{{fl.departure_datetime|date:'y-m-d'}}">
+            </div>
+            <div class="input-box">
+              <span class="details">Arrival Date/Time</span>
+              <input type="datetime-local" name="Arrival_datetime" id="" value="{{fl.arrival_datetime|date:'y-m-d'}}">
+            </div> -->
+            <div class="input-box">
+              <span class="details">Total Seats</span>
+              <input type="text" name="Seats" id="" value="{{fl.no_of_seats}}">
+            </div>
+            <!-- <div class="input-box">
+              <span class="details">Total Business Seats</span>
+              <input type="text" name="" id="">
+            </div> -->
+            <div class="input-box">
+              <span class="details">Price</span>
+              <input type="text" name="Price" id="" value="{{fl.price}}">
+            </div>
+            <div class="input-box">
+              <span class="details">Image</span>
+              {% if fl.image %}
+                <img src="{{fl.image.url}}" alt="" width="80px">
+              {% endif %}
+              <!-- <input type="file" name="Image" id="" style="padding-top:3%;"> -->
+            </div>
+            
+            <div class="input-box">
+              <!-- <span class="details">Image</span> -->
+              <input type="file" name="Image" id="" style="padding-top:3%;">
+            </div>
+          </div>
+          
+          
+          <div class="button">
+            <input type="submit" name="" value="Save">
+            <input type="submit" name="" value="Cancel">
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+    
+    
+    {% endblock %}
+  </body>

@@ -1,0 +1,46 @@
+{% extends 'customer_base.html' %}
+{% load static %}
+
+<body>
+  {% block content %}
+  <!-- <img src="{% static 'images/latest3.png' %}" class="w-100" alt="..."> -->
+  <section class="mybookings_section"style="padding-top:8%;">
+    <h2>My Bookings</h2>
+    <!-- <hr> -->
+    
+    <table class="table">
+        <thead>
+            <th>Booking ID</th>
+            <th>Customer Name</th>
+            <th>Booking Date</th>
+            <th>Travel Date</th>
+            <th>Total Fare</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Booking ID">1</td>
+                <td data-label="Customer Name">Arun</td>
+                <td data-label="Booking Date">3/7/2022</td>
+                <td data-label="Travel Date">24/7/2022</td>
+                <td data-label="Total Fare">40000.00/-</td>
+                <td data-label="Action"><a href="" style="color:#ff4584;">View Ticket</a></td>
+            </tr>
+            <tr>
+                <td data-label="Booking ID">2</td>
+                <td data-label="Customer Name">Arun</td>
+                <td data-label="Booking Date">10/8/2022</td>
+                <td data-label="Travel Date">29/8/2022</td>
+                <td data-label="Total Fare">30000.00/-</td>
+                <td data-label="Action"><a href="" style="color:#ff4584;">View Ticket</a></td>
+            </tr>
+
+        </tbody>
+    </table>
+    
+    </section>
+  {% endblock %}
+
+</body>
+
+  

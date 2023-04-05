@@ -1,0 +1,44 @@
+{% extends 'airlines_base.html' %}
+{% load static %}
+
+  <body>
+    {% block content %}
+    <section class="Image_upload_section">
+      <!-- <div class="imgBx">
+        <img src="{% static 'images/handnew.png' %}" alt="">
+      </div> -->
+      <div class="contentBx">
+        <div class="formBx">
+          <h2>Upload Image</h2>
+          <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="inputBx">
+              <span>Airline Name</span>
+              <input type="text" name="Airline_name" autocomplete="off" value="{{air.name}}">
+            </div>
+            <div class="inputBx">
+              <span>Flight Number</span>
+              <input type="text" name="Flight_no" autocomplete="off">
+            </div>
+            <div class="inputBx">
+                <span>Image</span>
+                <input type="file" name="Image">
+            </div>
+            
+
+
+            
+            <div class="inputBx">
+              <input type="submit" value="Submit" name="" style="width:80%;">
+            </div>
+            
+          </form>
+          <p>{{msg}}</p>
+        </div>
+      </div>
+    </section>
+
+    
+    
+    {% endblock %}
+  </body>

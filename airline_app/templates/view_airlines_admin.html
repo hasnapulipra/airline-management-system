@@ -1,0 +1,41 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+
+<body>
+  {% block content %}
+  <!-- <img src="{% static 'images/latest3.png' %}" class="w-100" alt="..."> -->
+  <section class="view_airlines_admin_section" style="padding-top:8%;">
+    <h2>View Airlines</h2>
+    
+    <table class="table">
+        <thead>
+            <th>Sr.No</th>
+            <th>Image</th>
+            <th>Airlines Name</th>
+            <th>Email</th>
+            <th>Contact No</th>
+            <!-- <th>Country</th> -->
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {% for a in al %}
+            <tr>
+                <td data-label="Sr.No">{{a.id}}</td>
+                <td data-label="Image"><img src="{{a.image.url}}" alt="" width="65px;"></td>
+                <td data-label="Airlines Name">{{a.name}}</td>
+                <td data-label="Email">{{a.email}}</td>
+                <td data-label="Contact No">{{a.contact}}</td>
+                <!-- <td data-label="Country">India</td> -->
+                <td data-label="Action"><a href="{% url 'delete_airline' a.id %}" style="color:#ff4584;">Delete</a></td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    
+    </section>
+  {% endblock %}
+
+</body>
+
+  

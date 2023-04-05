@@ -1,0 +1,71 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+
+<body>
+  {% block content %}
+  <!-- <img src="{% static 'images/latest3.png' %}" class="w-100" alt="..."> -->
+  <section class="viewbookings_section" style="padding-top:8%;">
+    <h2>View Bookings</h2>
+    <table class="table">
+        <thead>
+            <th>S.No</th>
+            <th>Booking ID</th>
+            <th>Customer Name</th>
+            <th>Mobile No</th>
+            <th>Flight Name</th>
+            <th>Booking Date</th>
+            <th>Travel Date</th>
+            <th>Total</th>
+            <th>View Detail</th>
+            <!-- <th> CancelBooking</th> -->
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="S.No">1</td>
+                <td data-label="Booking ID">b45fgd432sa</td>
+                <td data-label="Customer Name">Arun</td>
+                <td data-label="Mobile No">9877665451</td>
+                <td data-label="Flight Name">Air India</td>
+                
+                <td data-label="Booking Date">3/7/2022</td>
+                <td data-label="Travel Date">24/7/2022</td>
+                <td data-label="Total">40000.00/-</td>
+                <td data-label="View Detail"><a href="view_bookings_admin_details" style="color:#ff4584;">Detail</a></td>
+            </tr>
+            <tr>
+                <td data-label="S.No">2</td>
+                <td data-label="Booking ID">ghh453sdfa34</td>
+                <td data-label="Customer Name">Teena</td>
+                <td data-label="Mobile No">9877667451</td>
+                <td data-label="Flight Name">Etihad</td>
+                
+                <td data-label="Booking Date">2/4/2022</td>
+                <td data-label="Travel Date">20/4/2022</td>
+                <td data-label="Total">50000.00/-</td>
+                <td data-label="View Detail"><a href="view_bookings_admin_details" style="color:#ff4584;">Detail</a></td>
+            </tr>
+            <tr>
+                <td data-label="S.No">3</td>
+                <td data-label="Booking ID">12sdfgh45</td>
+                <td data-label="Customer Name">Rohit</td>
+                <td data-label="Mobile No">9877677489</td>
+                <td data-label="Flight Name">Air Arabia</td>
+                
+                <td data-label="Booking Date">2/3/2022</td>
+                <td data-label="Travel Date">17/4/2022</td>
+                <td data-label="Total">20000.00/-</td>
+                <td data-label="View Detail"><a href="view_bookings_admin_details" style="color:#ff4584;">Detail</a></td>
+            </tr>
+            
+            
+
+
+        </tbody>
+    </table>
+    
+    </section>
+  {% endblock %}
+
+</body>
+
+  

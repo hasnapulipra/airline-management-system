@@ -1,0 +1,259 @@
+{% extends 'customer_base.html' %}
+{% load static %}
+
+<body>
+  {% block content %}
+ 
+  <section class="addpassenger_section"style="padding-top:8%;">
+    <h2 style="text-align:left;">Airlines Details</h2>
+    <hr>
+    <div class="airline_details">
+        
+            <div class="imgBx">
+                <img src="{{fl.image.url}}" alt="">
+            </div>
+            <div class="content">
+                <span><b>{{fl.airline_name}}</b></span><br>
+                <span>Flight number : {{fl.flight_no}}</span><br>
+                <span>From : {{fl.departure_city}}</span><br>
+                <span>To : {{fl.arrival_city}}</span><br>
+                <span id="fare">{{fl.price}}</span>
+            </div>
+        
+    </div>
+    <hr>
+    <h2 style="text-align:left;">Enter passenger Details</h2>
+    <hr>
+    <div class="add_passenger_details">
+        <form action="">
+            <input type="text" name="passenger_name" id="fname" placeholder="Passenger Name" autocomplete="off">
+            <input type="text" name="passenger_age" id="age" placeholder=" Passenger Age" autocomplete="off">
+            
+              
+            <select name="" id="gender" placeholder="Gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <input type="text" name="Contact" id="contact" placeholder="Contact No" autocomplete="off">
+           
+            <button id="b1" style="padding:6px 15px;color:white;" name="button" onclick="AddRow()">Add</button>
+            <button id="b1" style="padding:6px 15px;color:white;" name="button" onclick="ClearForm()">clear</button>
+        </form>
+       
+    </div>
+
+    
+    <h2>all Added Passengers</h2>
+    <hr>
+    <p style="color:red;display:none;" id="successmsg">Passenger added successfully !!!</p>
+    
+    <table class="table" id="show">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Mobile No</th>
+                <th id="farecolumn">Fare</th>
+                <th>Action</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+        </tbody>
+            <!-- <tr>
+                <td data-label="Sr.No"></td>
+                <td data-label="Name"></td>
+                <td data-label="Age"></td>
+                <td data-label="Gender"></td>
+                <td data-label="Mobile No"></td>
+                <td data-label="Fare"></td>
+               
+            </tr>
+            <tr>
+                
+                <th colspan="5" style="text-align:right;color:#607d8b;">Total Fare:</th>
+                <th colspan="2" style="text-align:left;color:#607d8b;" id="total"></th>
+            </tr>
+            <tr>
+                <td colspan="7"><button id="b2"><a href="" style="color:white;text-decoration:none;">Book Ticket</a></button></td>
+            </tr> -->
+
+            <!-- <tr>
+                
+                <th colspan="5" style="text-align:right;color:#607d8b;">Total Fare:</th>
+                <th colspan="2" style="text-align:left;color:#607d8b;" id="total"></th>
+            </tr>
+            <tr>
+                <td colspan="7"><button id="b2"><a href="" style="color:white;text-decoration:none;">Book Ticket</a></button></td>
+            </tr>  -->
+        
+    </table>
+    <div class="totalfare">
+        <span style="color:#607d8b;">Total Fare:</span>
+        <span style="color:#607d8b;margin-right:5%;" id="total"></span>
+        <button id="rzp-button1" onclick="pay()" style="color:white;text-decoration:none;">Book Ticket</button>
+    </div>
+    
+    </section>
+
+     
+
+     <script>
+        
+        $(document).ready(function(){
+            $('#successmsg').hide();
+            
+            
+        })
+        var total = 0;
+        
+        const form = document.querySelector('form');
+        const tbody = document.querySelector('tbody');
+        const table = document.querySelector('table');
+        var n=1;
+
+
+        function AddRow(){
+            event.preventDefault();
+            const name = document.getElementById('fname').value;
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const contact = document.getElementById('contact').value;
+            const fare = document.getElementById('fare').innerHTML;
+           
+            tbody.innerHTML += `
+                <tr>
+                    <td>${n}</td>
+                    <td>${name}</td>
+                    <td>${age}</td>
+                    <td>${gender}</td>
+                    <td>${contact}</td>
+                    <td>${fare}</td>
+                    <td><button class="deleteBtn" style="color:white;">Delete</button></td>
+                </tr>
+            `;
+
+            
+            // forloop
+            var tb = document.getElementById("show"), sumVal = 0;
+            for(var i=1; i < tb.rows.length; i++){
+                var cellValue = table.rows[i].cells[5].innerHTML;
+                if (!isNaN(cellValue)) {
+                    sumVal = sumVal + parseFloat(cellValue);
+                }
+                
+            }
+            console.log(sumVal);
+
+            document.getElementById('total').innerHTML=sumVal;
+            n++;
+            $('#successmsg').show();
+        }
+
+       
+        
+        function pay(){
+            alert("vjvj");
+            var amt = $("#total").val() * 1000
+            console.log(amt);
+            $.ajax({
+                
+                type: 'POST',
+                data: {
+                    totalprice: amt * 100,
+                },
+                success: function(response){
+                    // console.log("payment_id=" + response.id);
+                    var options = {
+                        "key": "rzp_test_w8Y1EMxtNy1vBM", // Enter the Key ID generated from the Dashboard
+                        "amount": amt, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                        "currency": "INR",
+                        "name": "Acme Corp",
+                        "description": "Test Transaction",
+                        "image": "https://example.com/your_logo",
+                        // "order_id": "1234", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                        "handler": function (response){
+                            alert('payment successful');
+                            updatePayment()
+                            // alert(response.razorpay_payment_id);
+                            // alert(response.razorpay_order_id);
+                            // alert(response.razorpay_signature)
+                        },
+                        "theme": {
+                            "color": "#3399cc"
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.on('payment.failed', function (response){
+                        alert(response.error.code);
+                        // alert(response.error.description);
+                        // alert(response.error.source);
+       
+                    });
+                    rzp1.open();
+                }
+                
+        })
+           
+
+    }
+    function updatePayment(){
+        $.ajax({
+            
+            type: 'get',
+            success: function(response){
+                alert("Your ticket booked successfully")
+                window.location.reload();
+            }
+        })
+    }
+
+
+
+
+    
+
+        // clear form
+        function ClearForm(){
+            event.preventDefault();
+            document.getElementById('fname').value="";
+            document.getElementById('age').value="";
+            document.getElementById('gender').value="";
+            document.getElementById('contact').value="";  
+        }
+
+
+
+
+        // delete function
+        function onDeleteRow(e){
+            if (!e.target.classList.contains("deleteBtn")) {
+                return;
+            }
+            const btndelete = e.target;
+            btndelete.closest("tr").remove();
+            // forloop
+            var tb = document.getElementById("show"), sumVal = 0;
+            for(var i=1; i < tb.rows.length; i++){
+                var cellValue = table.rows[i].cells[5].innerHTML;
+                if (!isNaN(cellValue)) {
+                    sumVal = sumVal + parseFloat(cellValue);
+                }
+                
+            }
+            console.log(sumVal);
+
+            document.getElementById('total').innerHTML=sumVal;
+            $('#successmsg').hide();
+        }
+       
+        table.addEventListener('click', onDeleteRow);
+        
+    </script> 
+  {% endblock %}
+
+</body>
+
+  

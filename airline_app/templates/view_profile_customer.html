@@ -1,0 +1,57 @@
+{% extends 'customer_base.html' %}
+{% load static %}
+
+<body>
+  {% block content %}
+  <!-- <img src="{% static 'images/latest3.png' %}" class="w-100" alt="..."> -->
+  <section class="view_profile_customer_section" style="padding-top:8%;">
+    <h2>Customer Profile</h2>
+    
+    <table class="table">
+        <thead>
+            <th>Attribute</th>
+            <th>Values</th>
+           
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Attribute">Full Name</td>
+                <td data-label="Values">{{cust.fullname}}</td>
+            </tr>
+            <tr>
+                <td data-label="Attribute">Email</td>
+                <td data-label="Values">{{cust.email}}</td>
+            </tr>
+            <tr>
+              <td data-label="Attribute">Date of Birth</td>
+              <td data-label="Values">{{cust.date_of_birth}}</td>
+          </tr>
+            <tr>
+                <td data-label="Attribute">Phone Number</td>
+                <td data-label="Values">{{cust.contact}}</td>
+            </tr>
+            <tr>
+                <td data-label="Attribute">City</td>
+                <td data-label="Values">{{cust.city}}</td>
+            </tr>
+            
+            <tr>
+                <td data-label="Attribute">Image</td>
+                <td data-label="Values"><img src="{{cust.image.url}}" alt="" width="40px;"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="button_row"><a href="{% url 'editprofile_customerpage' %}"><button>Edit Profile</button></a></td>
+            </tr>
+            
+            
+
+        </tbody>
+    </table>
+    
+    </section>
+   
+  {% endblock %}
+
+</body>
+
+  
